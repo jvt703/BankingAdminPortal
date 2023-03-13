@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: "accounts", component: AccountHomeComponent},
   {path: "transactions", component: HomePageComponent},
   {path: "loans", component: AccountHomeComponent},
-  {path: "creditcards", component: HomePageComponent}
+  {path: "creditcards", component: HomePageComponent} 
 
   ];
 
