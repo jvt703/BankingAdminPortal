@@ -1,0 +1,16 @@
+.section {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title {
+    margin-top: 3rem;
+    margin-left: 7rem;
+    margin-right: 7rem;
+    margin-bottom: 2rem;
+}
+.line-break{
+    border: 1px solid rgb(193, 192, 192);
+    margin-left: 7rem;
+    margin-right: 7rem;
+    
+}

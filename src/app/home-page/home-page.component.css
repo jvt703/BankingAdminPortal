@@ -1,0 +1,6 @@
+.cards-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    margin: 0 auto;
+    overflow: hidden;
+}

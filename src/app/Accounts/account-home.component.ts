@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./account-home.component.css']
 })
 export class AccountHomeComponent {
+  currentTitle ='Accounts'
   constructor() {
     
   }
