@@ -9,6 +9,7 @@ import { AccountHomeComponent } from './Accounts/account-home.component';
 import { SectionComponent } from './section/section.component';
 import { HomeCardsComponent } from './home-cards/home-cards.component';
 import { LoansComponent } from './loans/loans.component';
+import { LoansCardComponent } from './loans-card/loans-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoansComponent } from './loans/loans.component';
     AccountHomeComponent,
     SectionComponent,
     HomeCardsComponent,
-    LoansComponent
+    LoansComponent,
+    LoansCardComponent
   ],
   imports: [
     BrowserModule,

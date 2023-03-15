@@ -1,1 +1,4 @@
-<p>loans works!</p>
+
+<app-section [customTitle]="currentTitle">
+   <div *ngFor="let loan of loans"><app-loans-card [loanData]="loan"></app-loans-card></div> 
+ </app-section>

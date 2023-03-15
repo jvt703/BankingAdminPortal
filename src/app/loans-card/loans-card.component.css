@@ -1,0 +1,8 @@
+.loan-card-wrapper {
+    
+    width: auto;
+}
+
+.loan-card {
+    flex-grow: 1;
+}
