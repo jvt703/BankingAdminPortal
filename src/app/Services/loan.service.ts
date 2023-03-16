@@ -11,7 +11,15 @@ export class LoanService {
   constructor(private http: HttpClient) {}
 
   fetchAllLoans(): Observable<any> {
-    const url = `${this.apiUrl}/loans`;
+    const url = `${this.apiUrl}`;
     return this.http.get(url);
   }
+approveLoan(loanApplicationId: number): Observable<any> {
+    const url = `https://localhost:3000/loanApplication/${loanApplicationId}`;
+    const requestBody = {
+      approved: true
+    };
+    return this.http.post(url, requestBody);
+  }
+
 }
