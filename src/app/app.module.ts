@@ -1,3 +1,5 @@
+;
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +13,7 @@ import { HomeCardsComponent } from './home-cards/home-cards.component';
 import { LoansComponent } from './loans/loans.component';
 import { LoansCardComponent } from './loans-card/loans-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, 
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

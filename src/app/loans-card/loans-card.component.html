@@ -5,7 +5,7 @@
             <p class="card-text m-3"> Name: {{loanData.userFirstName}} {{loanData.userLastName}}</p>
             <p class="card-text m-3">Email: {{loanData.userEmailAddress}}</p>
             <p class="card-text m-3">Loan Amount: {{formatCurrency(loanData.loanAmount)}}</p>
-            <p class="card-text m-3">Approval Status: {{loanData.approved?"Approved":"Not Approved"}}</p>
+            <p class="card-text m-3">Approval Status: {{loanData.approved?"approved":"Not Approved"}}</p>
             <button *ngIf="!loanData.approved" class="btn btn-success m-3" (click)="approveLoan()">Approve</button>
         </div>
     </div>
