@@ -1,4 +1,7 @@
 
 <app-section [customTitle]="currentTitle">
+  <div *ngIf="isLoading" class="spinner-container">
+    <div class="spinner"></div>
+  </div>
    <div *ngFor="let loan of loans"><app-loans-card [loanData]="loan"></app-loans-card></div> 
  </app-section>

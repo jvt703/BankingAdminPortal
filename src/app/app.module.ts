@@ -10,7 +10,7 @@ import { SectionComponent } from './section/section.component';
 import { HomeCardsComponent } from './home-cards/home-cards.component';
 import { LoansComponent } from './loans/loans.component';
 import { LoansCardComponent } from './loans-card/loans-card.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +24,8 @@ import { LoansCardComponent } from './loans-card/loans-card.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

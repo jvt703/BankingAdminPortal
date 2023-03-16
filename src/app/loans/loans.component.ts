@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoanService } from '../Services/loan.service';
 
 @Component({
   selector: 'app-loans',
@@ -7,8 +8,29 @@ import { Component } from '@angular/core';
 })
 export class LoansComponent {
 currentTitle = 'Loans';
+isLoading: boolean = false;
 
-loans = [
+
+loans: any  = [];
+constructor(private loanService: LoanService){
+
+
+}
+
+ngOnInit() {
+    this.fetchAllLoans();
+  }
+
+ fetchAllLoans() {
+    this.isLoading = true;
+    this.loanService.fetchAllLoans().subscribe(
+      data => {
+        this.loans = data;
+        this.isLoading = false;
+      },
+      error => {
+        console.error('Error fetching all loans:', error);
+        this.loans = [
     {
         "loanApplicationId": 1,
         "loanAmount": 10000.0,
@@ -102,6 +124,9 @@ loans = [
         "decisionDate": null
     }
 ]
-
+this.isLoading = false;
+      }
+    );
+  }
 
 }

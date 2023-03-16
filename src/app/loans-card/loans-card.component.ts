@@ -10,6 +10,9 @@ export class LoansCardComponent {
 constructor(){
 
 }
-
+formatCurrency(amount: number): string {
+  //stack overflow regex for currency
+  return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
 
 }
