@@ -9,6 +9,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoansCardComponent {
 @Input() loanData: any;
 
+
+loading: boolean = false;
+
 constructor(private loanService: LoanService, private snackBar: MatSnackBar) { }
 formatCurrency(amount: number): string {
   //stack overflow regex for currency
@@ -16,14 +19,20 @@ formatCurrency(amount: number): string {
 }
 
 
+
+
  approveLoan() {
+  this.loading = true;
     this.loanService.approveLoan(this.loanData.loanApplicationId).subscribe({
       next: data => {
-        console.log('Loan approved:', data);
         this.loanData = data.loanApplication;
          this.snackBar.open('Loan Approved', 'Close', {
           duration: 5000,
-        });
+        }
+        
+        
+        );
+        
       },
       error: error => {
         console.error('Error approving loan:', error);
@@ -31,7 +40,14 @@ formatCurrency(amount: number): string {
          this.snackBar.open('Loan Approved', 'Close', {
           duration: 5000,
         });
+        this.loading=false;
       }
     });
+    
+  }
+
+  convertDate(dateofbirth: number){
+    var date = new Date(dateofbirth).toLocaleDateString()
+    return date
   }
 }

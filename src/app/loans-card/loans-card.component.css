@@ -6,3 +6,38 @@
 .loan-card {
     flex-grow: 1;
 }
+
+.spinner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    justify-content: center;
+    position: absolute;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.d-flex {
+    gap: 1rem;
+}
+
+
+.icon {
+
+    margin: 0;
+    top: 50%;
+}

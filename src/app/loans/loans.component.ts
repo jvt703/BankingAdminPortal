@@ -75,7 +75,7 @@ ngOnInit() {
            employmentStatus: 'SELF_EMPLOYED',
            grossAnnualIncome: 1.0,
            approved: true,
-           decisionDate: null,
+           decisionDate: 981525600000,
          },
          {
            loanApplicationId: 3,
