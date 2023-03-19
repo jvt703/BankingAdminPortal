@@ -1,0 +1,8 @@
+.app-toolbar-menu {
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.app-toolbar-menu:hover {
+  border-color: black;
+}

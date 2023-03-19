@@ -1,3 +1,6 @@
+import { UserSearchComponent } from './Users/user-search/user-search.component';
+import { UserCreateComponent } from './Users/user-create/user-create.component';
+import { UserHomeComponent } from './Users/user-home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountHomeComponent } from './Accounts/account-home.component';
@@ -7,8 +10,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 const routes: Routes = [
   {path: "", component: HomePageComponent},
   //don't have beginning slash
-  {path: "users", component: HomePageComponent},
-  {path: "users/create", component: HomePageComponent},
+  {path: "users", component: UserHomeComponent},
+  {path: "users/create", component: UserCreateComponent},
+  {path: "users/search", component: UserSearchComponent},
   {path: "accounts", component: AccountHomeComponent},
   {path: "accounts/create", component: AccountHomeComponent},
   {path: "transactions", component: HomePageComponent},
@@ -17,8 +21,10 @@ const routes: Routes = [
   {path: "loans/create", component: AccountHomeComponent},
   {path: "creditcards", component: HomePageComponent},
   {path: "creditcards/create", component: HomePageComponent},
-  {path: "loanapplication", component: AccountHomeComponent}, 
-  {path: "loanapplication/create", component: AccountHomeComponent} 
+  {path: "loanapplication", component: AccountHomeComponent},
+  {path: "loanapplication/create", component: AccountHomeComponent},
+  // WildCard route to handle unknown paths (always last)
+  {path: '**', component:HomePageComponent}
   ];
 
 @NgModule({
