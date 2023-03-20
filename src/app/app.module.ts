@@ -15,6 +15,11 @@ import { LoansCardComponent } from './loans-card/loans-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoanInfoModalComponent } from './loan-info-modal/loan-info-modal.component';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     SectionComponent,
     HomeCardsComponent,
     LoansComponent,
-    LoansCardComponent
+    LoansCardComponent,
+    LoanInfoModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,12 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     BrowserAnimationsModule, 
     MatSnackBarModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

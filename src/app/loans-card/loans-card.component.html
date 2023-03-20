@@ -1,7 +1,8 @@
-<div *ngIf="loanData" class="d-flex  m-3 loan-card-wrapper">
-    <div class="d-flex card loan-card ">
-        <h5 class="card-title m-3 .mat-h5">Loan Application Id- {{loanData.loanApplicationId}}</h5>
-        <div class="card-body d-flex" >
+<div *ngIf="loanData" class=" m-3 loan-card-wrapper">
+    <button (click)="openDialog()">Edit</button>
+    <div class=" card loan-card ">
+        <h5 class="card-title mx-3 mt-3 ">Loan Application Id- {{loanData.loanApplicationId}}</h5>
+        <div class="card-body d-flex justify-content-evenly" >
             <div class="loan-user-info">
             <div class="d-flex text-center "> <mat-icon>person</mat-icon> <div class="card-text"> Name: {{loanData.userFirstName}} {{loanData.userLastName}}</div></div>
             <div class="d-flex text-center "> <mat-icon>email</mat-icon> <div class="card-text">Email: {{loanData.userEmailAddress}}</div></div>

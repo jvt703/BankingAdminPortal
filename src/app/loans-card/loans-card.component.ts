@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { LoanService } from '../Services/loan.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { LoanInfoModalComponent } from '../loan-info-modal/loan-info-modal.component';
 @Component({
   selector: 'app-loans-card',
   templateUrl: './loans-card.component.html',
@@ -12,14 +14,24 @@ export class LoansCardComponent {
 
 loading: boolean = false;
 
-constructor(private loanService: LoanService, private snackBar: MatSnackBar) { }
+constructor(private loanService: LoanService, private snackBar: MatSnackBar, private dialog: MatDialog) { 
+
+
+
+}
 formatCurrency(amount: number): string {
   //stack overflow regex for currency
   return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 }
 
 
+openDialog(){
+  const dialogRef = this.dialog.open(LoanInfoModalComponent, {
+    data: { loanData: this.loanData }
+  });
 
+
+}
 
  approveLoan() {
   this.loading = true;

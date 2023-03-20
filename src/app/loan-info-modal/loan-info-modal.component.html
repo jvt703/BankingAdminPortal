@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Edit Loan Information</h2>
+<mat-dialog-content>
+    <form [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+        <div>
+            <mat-form-field>
+                <mat-label>Loan Amount</mat-label>
+                <input matInput formControlName="loanAmount" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="userFirstName" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="userLastName" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput formControlName="emailAddress" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Date of Birth</mat-label>
+                <input matInput formControlName="dateOfBirth" type="date" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="userStreet" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <input matInput formControlName="userCity" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-label>State</mat-label>
+                <input matInput formControlName="userState" />
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-button [disabled]="!loanForm.valid" (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>
