@@ -9,6 +9,11 @@
              <button  class="btn btn-danger m-1 approval-button"
                 (click)="approveLoan(false)">Reject</button>
     </div>
+    <div class="spinner_overlay" *ngIf="loading"></div>
+    <div class="spinner-container" *ngIf="loading">
+        
+        <div class="spinner"></div>
+    </div>
 
 </mat-dialog-content>
 <div mat-dialog-actions align="end" class="m-2" >

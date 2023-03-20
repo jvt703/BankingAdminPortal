@@ -27,9 +27,7 @@
 
         </div>
  
-        <div class="spinner-container" *ngIf="loading">
-             <div class="spinner"></div>
-        </div>
+        
         <div class="align-self-end  m-3">
             <button *ngIf="!loanData.approved" class="btn btn-danger m-1 approval-button"
                         (click)="openDialog(false)">Reject</button>
@@ -39,6 +37,7 @@
        
     
     </div>
+   
     
 </div>
 

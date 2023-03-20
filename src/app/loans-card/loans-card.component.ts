@@ -12,6 +12,7 @@ export class LoansCardComponent {
 
 loading: boolean = false;
 
+
 constructor( private dialog: MatDialog) { 
 
 

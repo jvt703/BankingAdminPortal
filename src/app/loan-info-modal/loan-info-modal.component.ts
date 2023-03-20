@@ -41,7 +41,8 @@ ngOnInit(): void {
                   duration: 5000,
                 })
         }
-this.loading=false;
+      this.loading=false;
+      this.dialogRef.close();
       },
       error: error => {
         console.error('Error approving loan:', error);
@@ -51,6 +52,7 @@ this.loading=false;
           duration: 5000,
         });
         this.loading=false;
+        this.dialogRef.close();
       }
     });
     
