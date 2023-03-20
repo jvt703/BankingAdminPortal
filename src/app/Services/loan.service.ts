@@ -14,12 +14,18 @@ export class LoanService {
     const url = `${this.apiUrl}`;
     return this.http.get(url);
   }
-approveLoan(loanApplicationId: number): Observable<any> {
+approveLoan(loanApplicationId: number, approval: boolean): Observable<any> {
     const url = `https://localhost:3000/loanApplication/${loanApplicationId}`;
     const requestBody = {
-      approved: true
+      approved: approval
     };
     return this.http.post(url, requestBody);
+  }
+
+  editLoan(){
+
+
+
   }
 
 }

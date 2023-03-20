@@ -4,15 +4,12 @@
             <h5 class="card-title m-2">{{sectionTitle}}</h5>
             <p class="card-text m-3">{{sectionText}}</p>
 
-            <div class="btn-nav d-flex">
+            <div class="btn-nav d-flex justify-content-center">
                  <button type="button" class=" btn button-7 btn-primary m-1" [routerLinkActive]="['active']"
-                routerLink={{sectionLink}}>View All
-                {{sectionTitle}} </button>
+                routerLink={{sectionLink}}>View All</button>
             <button type="button" class=" btn button-7 btn-primary m-1" [routerLinkActive]="['active']"
-                routerLink={{CreateLink}}>Create
-                {{sectionTitle}} </button>
-            <button type="button" class=" btn button-7 btn-primary m-1" [routerLinkActive]="['active']"
-                routerLink={{sectionLink}}>Search {{sectionTitle}} </button>
+                routerLink={{CreateLink}}>Create</button>
+        
             </div>
            
 

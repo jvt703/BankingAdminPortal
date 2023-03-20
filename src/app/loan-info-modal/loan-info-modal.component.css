@@ -1,0 +1,24 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+form {
+    width: 100%;
+    max-width: 600px;
+ 
+}
+.confirmation {
+
+    text-align: center;
+}
+.approval-button {
+    margin: 0 auto;
+}
+
+.confirmation-wrapper {
+    text-align: center;
+}

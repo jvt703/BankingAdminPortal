@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Inject, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoanService } from '../Services/loan.service';
 
 @Component({
   selector: 'app-loan-info-modal',
@@ -10,36 +12,59 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class LoanInfoModalComponent implements OnInit {
 
 @Input() loanData: any;
+@Input() approvedBool: boolean;
+loading: boolean = false;
 
-loanForm: FormGroup;
-
-constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<LoanInfoModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+constructor( public dialogRef: MatDialogRef<LoanInfoModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any, private loanService: LoanService, private snackBar: MatSnackBar
   ) {
     this.loanData = data.loanData;
-    this.loanForm = this.initializeForm();}
+    this.approvedBool = data.approvedBool
+    }
 
 ngOnInit(): void {
     
   }
 
 
- initializeForm(): FormGroup {
-    return this.fb.group({
-      loanAmount: [this.loanData.loanAmount, Validators.required],
-      userFirstName: [this.loanData.userFirstName, Validators.required],
-      userLastName: [this.loanData.userLastName, Validators.required],
-      emailAddress: [this.loanData.userEmailAddress, Validators.required],
-      dateOfBirth: [this.loanData.userDOB, Validators.required],
-      userStreet: [this.loanData.userAddress.street, Validators.required],
-      userCity: [this.loanData.userAddress.city, Validators.required],
-      userState: [this.loanData.userAddress.state, Validators.required],
-
+ approveLoan(approval: boolean) {
+  this.loading = true;
+    this.loanService.approveLoan(this.loanData.loanApplicationId, approval).subscribe({
+      next: data => {
+        this.loanData = data.loanApplication;
+        if(data.loanApplication.approval) {
+        this.snackBar.open('Loan Approved', 'Close', {
+          duration: 5000,
+        })
+        } else{
+        this.snackBar.open('Loan Disapproved', 'Close', {
+                  duration: 5000,
+                })
+        }
+this.loading=false;
+      },
+      error: error => {
+        console.error('Error approving loan:', error);
+        this.loanData.approved=true;
+        this.loanData.decisionDate=981525600000;
+         this.snackBar.open('Loan Approved', 'Close', {
+          duration: 5000,
+        });
+        this.loading=false;
+      }
     });
+    
   }
 
   onSubmit() {
+
+
+
    this.dialogRef.close();
   }
 
+
+
+  
+  
 }

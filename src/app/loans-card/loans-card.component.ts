@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { LoanService } from '../Services/loan.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { LoanInfoModalComponent } from '../loan-info-modal/loan-info-modal.component';
 @Component({
@@ -14,7 +12,7 @@ export class LoansCardComponent {
 
 loading: boolean = false;
 
-constructor(private loanService: LoanService, private snackBar: MatSnackBar, private dialog: MatDialog) { 
+constructor( private dialog: MatDialog) { 
 
 
 
@@ -25,38 +23,16 @@ formatCurrency(amount: number): string {
 }
 
 
-openDialog(){
+openDialog(approved: boolean){
   const dialogRef = this.dialog.open(LoanInfoModalComponent, {
-    data: { loanData: this.loanData }
+    data: { loanData: this.loanData, approvedBool: approved },
+    width: '600px' 
   });
-
+ 
 
 }
 
- approveLoan() {
-  this.loading = true;
-    this.loanService.approveLoan(this.loanData.loanApplicationId).subscribe({
-      next: data => {
-        this.loanData = data.loanApplication;
-         this.snackBar.open('Loan Approved', 'Close', {
-          duration: 5000,
-        }
-        
-        
-        );
-        
-      },
-      error: error => {
-        console.error('Error approving loan:', error);
-        this.loanData.approved=true;
-         this.snackBar.open('Loan Approved', 'Close', {
-          duration: 5000,
-        });
-        this.loading=false;
-      }
-    });
-    
-  }
+
 
   convertDate(dateofbirth: number){
     var date = new Date(dateofbirth).toLocaleDateString()

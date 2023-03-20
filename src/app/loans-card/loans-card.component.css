@@ -41,3 +41,23 @@
     margin: 0;
     top: 50%;
 }
+
+.edit-button {
+ width: 30px;
+padding: 0;
+    border: none;
+    background: none;
+}
+
+.button-wrapper {
+
+}
+
+.title-wrapper {
+    display: inline-block;
+}
+
+.approval-button {
+    font-size: .8vw;
+    width: 7vw;
+}
