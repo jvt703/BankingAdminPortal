@@ -11,8 +11,9 @@ table {
   width: 100%;
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color: rgb(255, 255, 255);
+mat-form-field mat-form-field-appearance-outline mat-form-field-outline {
+  /* color: rgb(255, 255, 255); */
+  border-width: 0;
 }
 
 input.mat-input-element {
@@ -25,5 +26,11 @@ input.mat-input-element {
 }
 
 .app-toolbar-menu:hover {
-  border-color: white;
+  border-color: black;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -21,7 +21,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { UserCreateComponent } from './Users/user-create/user-create.component';
-import { UserSearchComponent } from './Users/user-search/user-search.component';
+import { TransactionHomeComponent } from './Transactions/transaction-home.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { UserSearchComponent } from './Users/user-search/user-search.component';
     HomeCardsComponent,
     UserHomeComponent,
     UserCreateComponent,
-    UserSearchComponent
+    TransactionHomeComponent
   ],
   imports: [
     BrowserModule,

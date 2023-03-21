@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-create',
@@ -19,7 +20,7 @@ export class UserCreateComponent {
   private userSubmit: User = {} as User;
   private apiURL: string = "http://localhost:8080/user";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getErrorMessageFn() {
     if (this.password.hasError('required')) {
@@ -80,6 +81,7 @@ export class UserCreateComponent {
       .pipe(catchError((error) => this.handleError(error)))
       .subscribe((user) => {
         // console.log(user);
+        this.router.navigate(['users']);
       });
   }
 }

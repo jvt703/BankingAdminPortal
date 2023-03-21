@@ -11,22 +11,22 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, throwError } from "rxjs";
-import { User } from "../Interfaces/user.interface";
+import { Transaction } from "../Interfaces/transaction.interface";
 
-let ELEMENT_DATA: User[] = [];
+let ELEMENT_DATA: Transaction[] = [];
 
 @Component({
-  selector: "app-user-home",
-  templateUrl: "./user-home.component.html",
-  styleUrls: ["./user-home.component.css"],
+  selector: 'app-transaction-home',
+  templateUrl: './transaction-home.component.html',
+  styleUrls: ['./transaction-home.component.css']
 })
-export class UserHomeComponent {
-  currentTitle = 'Users';
+export class TransactionHomeComponent {
+  currentTitle = 'Transactions';
   displayedColumns: string[] = [
-    "id",
-    "firstname",
-    "lastname",
-    "email",
+    "sourceAccount",
+    "destinationAccount",
+    "date",
+    "amount",
     "action",
   ];
   dataSource = new MatTableDataSource<any>();
@@ -34,25 +34,24 @@ export class UserHomeComponent {
   pageNumber: number = 1;
   VOForm: FormGroup = {} as FormGroup;
   isEditableNew: boolean = true;
-  id = new FormControl('', []);
-  fn = new FormControl('', [Validators.min(2)]);
-  ln = new FormControl('', [Validators.min(2)]);
-  email = new FormControl('', [Validators.email]);
-  private apiURL: string = "http://localhost:8080/user";
+  sourceAccount = new FormControl('', []);
+  destinationAccount = new FormControl('', []);
+  date = new FormControl('', []);
+  amount = new FormControl('', []);
+  private apiURL: string = "http://localhost:8080/transaction";
 
   constructor(
     private fb: FormBuilder,
     private _formBuilder: FormBuilder,
     private http: HttpClient
   ) {
-    // this.user = {} as User;
     http
-      .get<User[]>(this.apiURL)
+      .get<Transaction[]>(this.apiURL)
       .pipe(catchError((error) => this.handleError(error)))
-      .subscribe((userList) => {
-        // console.log(userList);
-        ELEMENT_DATA = userList as User[];
-        this.updateTable();
+      .subscribe((transactionList) => {
+        // console.log(transactionList);
+        ELEMENT_DATA = transactionList as Transaction[];
+        this.createTable();
       });
   }
 
@@ -68,27 +67,22 @@ export class UserHomeComponent {
         error.error
       );
     }
-    // Return an observable with a user-facing error message.
+    // Return an observable with a transaction-facing error message.
     return throwError(() => new Error(`Backend returned code ${error.status}`));
   }
 
-  searchUser(): void {
+  searchTransaction(): void {
     let concatURL = this.apiURL + '?';
-    concatURL += ((this.id.value ?? '') != '' ? `id=${this.id.value}&` : '');
-    concatURL += ((this.fn.value ?? '') != '' ? `fn=${this.fn.value}&` : '');
-    concatURL += ((this.ln.value ?? '') != '' ? `ln=${this.ln.value}&` : '');
-    concatURL += ((this.email.value ?? '') != '' ? `email=${this.email.value}&` : '');
     this.http
-      .get<User[]>(concatURL)
+      .get<Transaction[]>(concatURL)
       .pipe(catchError((error) => this.handleError(error)))
-      .subscribe((userList) => {
-        // console.log(userList);
-        ELEMENT_DATA = userList as User[];
-        this.updateTable();
+      .subscribe((transactionList) => {
+        ELEMENT_DATA = transactionList as Transaction[];
+        this.createTable();
       });
   }
 
-  updateTable(): void {
+  createTable(): void {
     this.VOForm = this._formBuilder.group({
       VORows: this._formBuilder.array([]),
     });
@@ -97,10 +91,10 @@ export class UserHomeComponent {
       VORows: this.fb.array(
         ELEMENT_DATA.map((val) =>
           this.fb.group({
-            id: new FormControl(val.id),
-            firstname: new FormControl(val.firstname),
-            lastname: new FormControl(val.lastname),
-            email: new FormControl(val.email),
+            sourceAccount: new FormControl(val.sourceAccount),
+            destinationAccount: new FormControl(val.destinationAccount),
+            date: new FormControl(val.date),
+            amount: new FormControl(val.amount),
             action: new FormControl("existingRecord"),
             isEditable: new FormControl(true),
             isNewRow: new FormControl(false),
@@ -112,7 +106,6 @@ export class UserHomeComponent {
     this.dataSource = new MatTableDataSource(
       (this.VOForm.get("VORows") as FormArray).controls
     );
-    // this.dataSource.paginator = this.paginator;
 
     const filterPredicate = this.dataSource.filterPredicate;
     this.dataSource.filterPredicate = (data: AbstractControl, filter) => {
@@ -136,12 +129,6 @@ export class UserHomeComponent {
     this.paginatorList = document.getElementsByClassName(
       "mat-paginator-range-label"
     );
-
-    // this.onPaginateChange(this.paginator, this.paginatorList);
-
-    // this.paginator.page.subscribe(() => {
-    //   this.onPaginateChange(this.paginator, this.paginatorList);
-    // });
   }
 
   applyFilter(event: Event) {
@@ -150,27 +137,23 @@ export class UserHomeComponent {
   }
 
   AddNewRow() {
-    // this.getBasicDetails();
     const control = this.VOForm.get("VORows") as FormArray;
     control.insert(0, this.initiateVOForm());
     this.dataSource = new MatTableDataSource(control.controls);
   }
 
   EditSVO(VOFormElement: any, i: any) {
-    // VOFormElement.get('VORows').at(i).get('name').disabled(false)
     VOFormElement.get("VORows").at(i).get("isEditable").patchValue(false);
   }
 
-  private saveUser: User = {} as User;
+  private saveTransaction: Transaction = {} as Transaction;
   SaveVO(VOFormElement: any, i: any) {
     VOFormElement.get("VORows").at(i).get("isEditable").patchValue(true);
-    this.saveUser = VOFormElement.get("VORows").at(i).value;
-    // console.log(this.saveUser);
+    this.saveTransaction = VOFormElement.get("VORows").at(i).value;
     this.http
-      .put<User>(this.apiURL, this.saveUser)
+      .put<Transaction>(this.apiURL, this.saveTransaction)
       .pipe(catchError((error) => this.handleError(error)))
-      .subscribe((user) => {
-        // console.log(user);
+      .subscribe((transaction) => {
       });
   }
 
@@ -206,10 +189,10 @@ export class UserHomeComponent {
 
   initiateVOForm(): FormGroup {
     return this.fb.group({
-      id: new FormControl(234),
-      firstname: new FormControl(""),
-      lastname: new FormControl(""),
-      email: new FormControl(""),
+      sourceAccount: new FormControl(234),
+      destinationAccount: new FormControl(""),
+      date: new FormControl(""),
+      amount: new FormControl(""),
       action: new FormControl("newRecord"),
       isEditable: new FormControl(false),
       isNewRow: new FormControl(true),
