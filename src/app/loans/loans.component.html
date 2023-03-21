@@ -1,5 +1,6 @@
 
 <app-section [customTitle]="currentTitle">
+  <input type="text" [(ngModel)]="searchValue" (input)="onSearch()" placeholder="Search loans...">
   <div *ngIf="isLoading" class="spinner-container">
     <div class="spinner"></div>
   </div>

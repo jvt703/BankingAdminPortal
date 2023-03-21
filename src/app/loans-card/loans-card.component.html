@@ -29,9 +29,11 @@
  
         
         <div class="align-self-end  m-3">
+            <button *ngIf="!loanData.approved" class="btn btn-success m-1 approval-button"
+                (click)="openDialog(true)">Approve</button>
             <button *ngIf="!loanData.approved" class="btn btn-danger m-1 approval-button"
                         (click)="openDialog(false)">Reject</button>
-                <button *ngIf="!loanData.approved" class="btn btn-success m-1 approval-button" (click)="openDialog(true)">Approve</button>
+                
 
         </div>
        

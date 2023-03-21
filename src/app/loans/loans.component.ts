@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LoanService } from '../Services/loan.service';
 import { PageEvent } from '@angular/material/paginator';
-
+import { Loan } from '../Interfaces/loans.model';
 @Component({
   selector: 'app-loans',
   templateUrl: './loans.component.html',
@@ -10,9 +10,9 @@ import { PageEvent } from '@angular/material/paginator';
 export class LoansComponent {
 currentTitle = 'Loans';
 isLoading: boolean = false;
+searchValue: string = '';
 
-
-loans: any  = [];
+loans: Loan[] = [];
 displayedLoans: any = [];
 pageSize: number = 5;
 pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -25,13 +25,20 @@ ngOnInit() {
     this.fetchAllLoans();
   }
 
- fetchAllLoans() {
+ fetchAllLoans(searchValue?: string) {
    this.isLoading = true;
    this.loanService.fetchAllLoans().subscribe({
      next: (data) => {
        this.loans = data;
+       if (this.searchValue) {
+         this.loans = this.loans.filter(loan => {
+           return loan.userFirstName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
+                  loan.userLastName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
+                  loan.loanApplicationId.toString().includes(this.searchValue)
+         })
+       }
        this.isLoading = false;
-      this.pageChanged({ pageIndex: 0, pageSize: this.pageSize, length: this.loans.length });
+       this.pageChanged({ pageIndex: 0, pageSize: this.pageSize, length: this.loans.length });
      },
      error: (error) => {
        console.error('Error fetching all loans:', error);
@@ -173,16 +180,33 @@ ngOnInit() {
            decisionDate: null,
          },
        ];
+       this.loans = this.loans.filter(loan => {
+           return loan.userFirstName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
+                  loan.userLastName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
+                  loan.loanApplicationId.toString().includes(this.searchValue)
+         })
        this.isLoading = false;
        this.pageChanged({ pageIndex: 0, pageSize: this.pageSize, length: this.loans.length });
      },
    });
  }
+onSearch() {
+  this.fetchAllLoans(this.searchValue);
+}
 
-  pageChanged(event: PageEvent) {
-    const startIndex = event.pageIndex * event.pageSize;
-    const endIndex = startIndex + event.pageSize;
-    this.displayedLoans = this.loans.slice(startIndex, endIndex);
+pageChanged(event: PageEvent) {
+  const startIndex = event.pageIndex * event.pageSize;
+  const endIndex = startIndex + event.pageSize;
+  let loansToDisplay = this.loans.slice(startIndex, endIndex);
+  console.log(loansToDisplay)
+  if (this.searchValue) {
+    loansToDisplay = loansToDisplay.filter(loan => {
+      return loan.userFirstName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
+             loan.userLastName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
+             loan.loanApplicationId.toString().includes(this.searchValue)
+    })
   }
+  this.displayedLoans = loansToDisplay;
+}
 
 }
