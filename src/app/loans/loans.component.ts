@@ -196,21 +196,19 @@ ngOnInit() {
      },
    });
  }
-onSearch() {
-  this.fetchAllLoans();
-}
+
 
 pageChanged(event: PageEvent) {
   const startIndex = event.pageIndex * event.pageSize;
   const endIndex = startIndex + event.pageSize;
   let loansToDisplay = this.loans.slice(startIndex, endIndex);
-  console.log(loansToDisplay)
-  if (this.searchValue) {
-    loansToDisplay = loansToDisplay.filter(loan => {
-      return loan.userFirstName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
-             loan.userLastName.toLowerCase().includes(this.searchValue.toLowerCase()) || 
-             loan.loanApplicationId.toString().includes(this.searchValue)
+ 
+ if (this.firstname) {
+     this.displayedLoans= this.displayedLoans.filter((loan: Loan) => {
+      return loan.userFirstName.toLowerCase().includes(this.firstname.toLowerCase()) 
+            
     })
+    console.log(this.displayedLoans, "hre")
   }
   this.displayedLoans = loansToDisplay;
 }
@@ -226,22 +224,22 @@ searchLoan(): void {
     concatURL += ((this.lastname ?? '') != '' ? `lastName=${this.lastname}&` : '');
     concatURL += ((this.approval ?? '') != '' ? `approved=${this.approval}&` : '');
     concatURL += ((this.decisionMade ?? '') != '' ? `decisionMade=${this.approval}&` : '');
-      console.log(concatURL)
+    
     this.isLoading = true;
     this.loanService.fetchLoanSearch(concatURL).subscribe({
       next: (data)=>{
-
         this.loans=data;
         this.isLoading = false;
-       this.pageChanged({ pageIndex: 0, pageSize: this.pageSize, length: this.loans.length });
+        this.displayedLoans = this.loans;
       },
      error: (error) => {
        console.error('Error fetching all loans:', error);
+      
        this.snackBar.open('Error Fetching Loans', 'Close', {
           duration: 5000,
         })
        this.isLoading = false;
-       this.pageChanged({ pageIndex: 0, pageSize: this.pageSize, length: this.loans.length });
+  
      }
 
     })
