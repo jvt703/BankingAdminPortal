@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { LoanService } from '../Services/loan.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Loan } from '../Interfaces/loans.model';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-loans',
@@ -53,7 +51,7 @@ ngOnInit() {
      error: (error) => {
        console.error('Error fetching all loans:', error);
        this.loans = [
-         {
+         {  
            loanApplicationId: 1,
            loanAmount: 10000.0,
            userFirstName: 'Testathan',
@@ -208,7 +206,7 @@ pageChanged(event: PageEvent) {
       return loan.userFirstName.toLowerCase().includes(this.firstname.toLowerCase()) 
             
     })
-    console.log(this.displayedLoans, "hre")
+
   }
   this.displayedLoans = loansToDisplay;
 }
