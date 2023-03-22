@@ -47,14 +47,15 @@
               *matCellDef="let element; let i = index"
               [formGroup]="element"
             >
-              <mat-form-field style="width: 70%;" appearance="outline">
+              <!-- <mat-form-field style="width: 70%;" appearance="outline"> -->
                 <input
                   matInput
                   type="text"
                   formControlName="id"
                   [readonly]="true"
                 />
-              </mat-form-field></td
+              <!-- </mat-form-field> -->
+              </td
           ></ng-container>
 
           <ng-container matColumnDef="firstname">
@@ -64,7 +65,7 @@
               *matCellDef="let element; let i = index"
               [formGroup]="element"
             >
-              <mat-form-field
+              <mat-form-field *ngIf="!VOForm.get('VORows')?.value[i].isEditable"
                 style="width: 70%;"
                 [appearance]="VOForm.get('VORows')?.value[i].isEditable? 'outline' : 'fill'"
               >
@@ -75,6 +76,12 @@
                   [readonly]="VOForm.get('VORows')?.value[i].isEditable"
                 />
               </mat-form-field>
+              <input *ngIf="VOForm.get('VORows')?.value[i].isEditable"
+                  matInput
+                  type="text"
+                  formControlName="firstname"
+                  [readonly]="VOForm.get('VORows')?.value[i].isEditable"
+                />
             </td>
           </ng-container>
           <ng-container matColumnDef="lastname">
@@ -84,7 +91,7 @@
               *matCellDef="let element; let i = index"
               [formGroup]="element"
             >
-              <mat-form-field
+              <mat-form-field *ngIf="!VOForm.get('VORows')?.value[i].isEditable"
                 style="width: 70%;"
                 [appearance]="VOForm.get('VORows')?.value[i].isEditable? 'outline' : 'fill'"
               >
@@ -95,6 +102,12 @@
                   [readonly]="VOForm.get('VORows')?.value[i].isEditable"
                 />
               </mat-form-field>
+              <input *ngIf="VOForm.get('VORows')?.value[i].isEditable"
+                matInput
+                type="text"
+                formControlName="lastname"
+                [readonly]="VOForm.get('VORows')?.value[i].isEditable"
+              />
             </td>
           </ng-container>
           <ng-container matColumnDef="email">
@@ -104,7 +117,7 @@
               *matCellDef="let element; let i = index"
               [formGroup]="element"
             >
-              <mat-form-field
+              <mat-form-field *ngIf="!VOForm.get('VORows')?.value[i].isEditable"
                 style="width: 70%;"
                 [appearance]="VOForm.get('VORows')?.value[i].isEditable? 'outline' : 'fill'"
               >
@@ -115,6 +128,12 @@
                   [readonly]="VOForm.get('VORows')?.value[i].isEditable"
                 />
               </mat-form-field>
+              <input *ngIf="VOForm.get('VORows')?.value[i].isEditable"
+                matInput
+                type="text"
+                formControlName="email"
+                [readonly]="VOForm.get('VORows')?.value[i].isEditable"
+              />
             </td>
           </ng-container>
 
@@ -150,7 +169,7 @@
               <mat-icon
                 mat-icon-button
                 class="material-icons app-toolbar-menu save-button"
-                *ngIf="VOForm.get('VORows')?.value[i].isEditable"
+                *ngIf="(VOForm.get('VORows')?.value in rows) {}"
                 matTooltip="Edit"
                 color="primary"
                 (click)="EditSVO(VOForm,i)"

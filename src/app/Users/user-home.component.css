@@ -11,10 +11,15 @@ table {
   width: 100%;
 }
 
-mat-form-field mat-form-field-appearance-outline mat-form-field-outline {
+input mat-form-field mat-form-field-appearance-outline mat-form-field-outline {
   /* color: rgb(255, 255, 255); */
-  border-width: 0;
+  border: 0;
+  outline: 0;
 }
+
+input {border:0;outline:0;}
+
+input:hover {border:2;outline:2;}
 
 input.mat-input-element {
   color: rgb(0, 0, 0);
@@ -34,3 +39,9 @@ input.mat-input-element {
   justify-content: center;
   align-items: center;
 }
+
+mat-mdc-text-field-wrapper mdc-text-field ng-tns-c69-4 mdc-text-field--no-label
+{}
+
+.mat-mdc-text-field-wrapper .mdc-text-field .ng-tns-c69-4 .mdc-text-field--no-label
+{}
