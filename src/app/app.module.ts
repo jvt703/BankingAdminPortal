@@ -5,9 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { AccountHomeComponent } from './Accounts/account-home.component';
+import { AccountHomeComponent } from './Accounts/account-home/account-home.component';
 import { SectionComponent } from './section/section.component';
 import { HomeCardsComponent } from './home-cards/home-cards.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
+import { FormsModule } from '@angular/forms';
+import {MatSortModule} from '@angular/material/sort';
+import {MatMenuModule} from '@angular/material/menu'; 
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -16,11 +25,20 @@ import { HomeCardsComponent } from './home-cards/home-cards.component';
     HomePageComponent,
     AccountHomeComponent,
     SectionComponent,
-    HomeCardsComponent
+    HomeCardsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    FormsModule,
+    MatSortModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
