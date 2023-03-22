@@ -8,20 +8,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AccountHomeComponent } from './Accounts/account-home.component';
 import { SectionComponent } from './section/section.component';
 import { HomeCardsComponent } from './home-cards/home-cards.component';
-import { UserHomeComponent } from './Users/user-home.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { UserCreateComponent } from './Users/user-create/user-create.component';
-import { TransactionHomeComponent } from './Transactions/transaction-home.component';
 
 @NgModule({
   declarations: [
@@ -30,26 +16,11 @@ import { TransactionHomeComponent } from './Transactions/transaction-home.compon
     HomePageComponent,
     AccountHomeComponent,
     SectionComponent,
-    HomeCardsComponent,
-    UserHomeComponent,
-    UserCreateComponent,
-    TransactionHomeComponent
+    HomeCardsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTableModule,
-    MatCardModule,
-    CommonModule,
-    MatIconModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
