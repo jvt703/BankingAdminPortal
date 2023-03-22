@@ -1,0 +1,85 @@
+<app-section [customTitle]="currentTitle">
+
+
+
+<div
+  style="padding-left: 7rem; padding-right: 7rem; padding-top: 2rem;"
+>
+  <p class="mat-body-strong">
+    Filter results
+  </p>
+  <div class="d-flex flex-row gap-3 align-items-end" style="margin-bottom: 2rem;">
+    <div class="form-group" *ngFor="let item of searchableFields">
+      <label for="search-{{item.name}}">{{item.display}}</label>
+      <input 
+        type="text" 
+        class="form-control" 
+        id="search-{{item.name}}" 
+        placeholder="{{item.type.name}}"
+        [(ngModel)]="item.value"
+      >
+    </div>
+    <button class="btn btn-primary" style="height: 2.5rem;" (click)="searchWithQuery()">
+      search
+    </button>
+  </div>
+  <div class="d-flex flex-column align-items-start">
+    <p class="mat-body-strong">
+      Columns displayed:
+    </p>
+    <div class="d-flex flex-row justify-content-between w-100 pb-4">
+      <div *ngFor="let item of columns">
+        <input type="checkbox" class="btn-check" id="{{item.field}}" autocomplete="off" [(ngModel)]="item.visible">
+        <label class="btn btn-outline-primary" for="{{item.field}}">{{item.display}}</label><br>
+      </div>
+    </div>
+  </div>
+  <table 
+    mat-table 
+    matSort
+    *ngIf="dataSource.data" 
+    [dataSource]="dataSource"
+  >
+    <ng-container *ngFor="let item of columns">
+      <ng-container matColumnDef="{{item.field}}">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{item.display}}</th>
+        <td mat-cell *matCellDef="let account"> {{account[item.field]}} </td>
+      </ng-container>
+    </ng-container>
+
+    <ng-container matColumnDef="modifyButton">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let account"> 
+        <button mat-button [matMenuTriggerFor]="menu">Modify</button>
+        <mat-menu #menu="matMenu">
+          <div mat-menu-item>
+            <input 
+              type="checkbox" 
+              class="btn-check" 
+              id="{{account.id}}-active" 
+              autocomplete="off" 
+              [(ngModel)]="account.active" 
+              (change)="updateAccountActivation(account, account.active)">
+            <label class="btn btn-outline-primary" for="{{account.id}}-active">{{account.active ? "Deactivate" : "Activate"}}</label>
+          </div>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="getColumnsForDisplay()"></tr>
+    <tr 
+      mat-row 
+      *matRowDef="let myRowData; columns: getColumnsForDisplay()"
+      [ngStyle]="myRowData.active ? {} : {'background-color': 'lightgrey'}"
+    ></tr>
+    
+    <mat-paginator></mat-paginator>
+  </table>
+</div>
+
+
+
+<mat-progress-spinner *ngIf="!dataSource.data" mode="indeterminate" color="primary"></mat-progress-spinner>
+
+</app-section>
+
