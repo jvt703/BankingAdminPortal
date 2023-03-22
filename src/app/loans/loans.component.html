@@ -1,0 +1,46 @@
+
+<app-section [customTitle]="currentTitle">
+  
+  <div *ngIf="isLoading" class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+<form class="search-form justify-content-center mt-2">
+  <div class="search-container d-flex">
+
+      <mat-form-field>
+        <input matInput name="id"type="number" placeholder="ID" [(ngModel)]="id">
+      </mat-form-field>
+      <mat-form-field>
+     <input matInput placeholder="Firstname" name="firstname"[(ngModel)]="firstname" >
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Lastname" name="lastname" [(ngModel)]="lastname">
+      </mat-form-field>
+      <mat-form-field class="approval-field">
+        <mat-label>Approval</mat-label>
+        <mat-select [(value)]="approval">
+          <mat-option value="">All</mat-option>
+          <mat-option value="True">Approved</mat-option>
+          <mat-option value="False">Rejected</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="decision-made-field">
+        <mat-label>Decision</mat-label>
+        <mat-select [(value)]="decisionMade">
+          <mat-option value="">All</mat-option>
+          <mat-option value="True">Decided</mat-option>
+          <mat-option value="False">Undecided</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+<button mat-raised-button color="primary" class="button-container d-flex align-items-center" (click)="searchLoan()">Search</button>
+
+  </div>
+  
+
+</form>
+  <div *ngFor="let loan of displayedLoans"><app-loans-card [loanData]="loan"></app-loans-card></div>
+  <mat-paginator [length]="loans.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    (page)="pageChanged($event)">
+  </mat-paginator>
+</app-section>
