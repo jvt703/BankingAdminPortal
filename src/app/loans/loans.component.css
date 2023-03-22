@@ -9,6 +9,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,4 +30,37 @@
     to {
         transform: rotate(360deg);
     }
+}
+.search-form {
+    display: flex;
+    align-items: flex-end;
+}
+
+.search-selects {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: 16px;
+}
+
+
+.search-button {
+    margin: 0;
+        position: absolute;
+        top: 50%;
+}
+
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 60vw;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    margin-bottom: 18px;
 }

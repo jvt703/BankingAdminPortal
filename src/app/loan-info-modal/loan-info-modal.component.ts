@@ -47,7 +47,7 @@ ngOnInit(): void {
       error: error => {
         console.error('Error approving loan:', error);
         this.loanData.approved=true;
-        this.loanData.decisionDate=981525600000;
+        this.loanData.decisionDate= new Date().getTime();
          this.snackBar.open('Loan Approved', 'Close', {
           duration: 5000,
         });

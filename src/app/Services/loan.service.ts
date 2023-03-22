@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoanService {
-  private apiUrl = 'https://localhost:3000/loanApplications';
+  private apiUrl = 'https://localhost:8080/loanApplications';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class LoanService {
     return this.http.get(url);
   }
 approveLoan(loanApplicationId: number, approval: boolean): Observable<any> {
-    const url = `https://localhost:3000/loanApplication/${loanApplicationId}`;
+    const url = `https://localhost:8080/loanApplication/${loanApplicationId}`;
     const requestBody = {
       approved: approval
     };
@@ -24,7 +24,12 @@ approveLoan(loanApplicationId: number, approval: boolean): Observable<any> {
 
   editLoan(){
 
+  }
 
+  fetchLoanSearch(searchUrl: string): Observable<any>{
+    let searchstring = this.apiUrl + searchUrl
+  
+    return this.http.get(searchstring);
 
   }
 

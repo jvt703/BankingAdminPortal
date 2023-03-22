@@ -1,11 +1,11 @@
 <h2 mat-dialog-title>Confirmation</h2>
 <mat-dialog-content class="mt-3">
     <div class="confirmation-wrapper" *ngIf="approvedBool">
-        <h4 class="confirmation">This Action Cannot be Undone. Please Confirm Approval of Loan</h4>
+        <h4 class="confirmation">Warning This Action Cannot be Undone. Please Confirm Approval of Loan</h4>
         <button  class="btn btn-success m-1 approval-button" (click)="approveLoan(true)">Approve</button>
     </div>
     <div class="confirmation-wrapper" *ngIf="!approvedBool">
-        <h4 class="confirmation">This Action Cannot be Undone. Please Confirm Rejection of Loan</h4>
+        <h4 class="confirmation">Warning This Action Cannot be Undone. Please Confirm Rejection of Loan</h4>
              <button  class="btn btn-danger m-1 approval-button"
                 (click)="approveLoan(false)">Reject</button>
     </div>

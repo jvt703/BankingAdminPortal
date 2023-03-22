@@ -22,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
-
+import { MatSelectModule } from '@angular/material/select'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +47,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatPaginatorModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
     
   
   ],
