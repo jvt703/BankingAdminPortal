@@ -34,6 +34,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatNativeDateModule } from '@angular/material/core';
+import { CreditCardsComponent } from './credit-cards/credit-cards.component';
+import { CreditcardsCardComponent } from './creditcards-card/creditcards-card.component';
+import { CreditcardInfoModalComponent } from './creditcard-info-modal/creditcard-info-modal.component';
+import { CreditCardTypeCreateComponent } from './credit-card-type-create/credit-card-type-create.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     LoansCardComponent,
     LoanInfoModalComponent,
     UserHomeComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    CreditCardsComponent,
+    CreditcardsCardComponent,
+    CreditcardInfoModalComponent,
+    CreditCardTypeCreateComponent
   ],
   imports: [
     BrowserModule,
