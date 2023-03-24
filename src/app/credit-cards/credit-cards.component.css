@@ -1,0 +1,67 @@
+.loans-grid {
+
+  margin: 0 auto;
+}
+
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.spinner {
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  justify-content: center;
+  position: absolute;
+}
+
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+.search-form {
+  display: flex;
+  align-items: flex-end;
+}
+
+.search-selects {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-left: 16px;
+}
+
+
+.search-button {
+  margin: 0;
+      position: absolute;
+      top: 50%;
+}
+
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  width: 60vw;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  margin-bottom: 18px;
+}
+  
