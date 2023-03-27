@@ -38,6 +38,8 @@ import { CreditCardsComponent } from './credit-cards/credit-cards.component';
 import { CreditcardsCardComponent } from './creditcards-card/creditcards-card.component';
 import { CreditcardInfoModalComponent } from './creditcard-info-modal/creditcard-info-modal.component';
 import { CreditCardTypeCreateComponent } from './credit-card-type-create/credit-card-type-create.component';
+import { CreditCardTypesComponent } from './credit-card-types/credit-card-types.component';
+import { CreditCardTypeEditDialogComponent } from './credit-card-type-edit-dialog/credit-card-type-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { CreditCardTypeCreateComponent } from './credit-card-type-create/credit-
     CreditCardsComponent,
     CreditcardsCardComponent,
     CreditcardInfoModalComponent,
-    CreditCardTypeCreateComponent
+    CreditCardTypeCreateComponent,
+    CreditCardTypesComponent,
+    CreditCardTypeEditDialogComponent
   ],
   imports: [
     BrowserModule,
