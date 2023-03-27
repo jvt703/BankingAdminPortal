@@ -1,22 +1,22 @@
 <div class="container">
-  <h2>Create Credit Card Type</h2>
-  <form (ngSubmit)="onSubmit()" [formGroup]="creditCardTypeForm">
-    <div class="form-group">
-      <label>Rewards Name:</label>
-      <input type="text" formControlName="rewardsName" class="form-control" placeholder="Enter rewards name" required>
-    </div>
-    <div class="form-group">
-      <label>Interest Rate:</label>
-      <input type="number" formControlName="interestRate" class="form-control" placeholder="Enter interest rate" required>
-    </div>
-    <div class="form-group">
-      <label>Minimum Payment:</label>
-      <input type="number" formControlName="minimumPayment" class="form-control" placeholder="Enter minimum payment" required>
-    </div>
-    <div class="form-group">
-      <label>Credit Limit:</label>
-      <input type="number" formControlName="creditLimit" class="form-control" placeholder="Enter credit limit" required>
-    </div>
-    <button type="submit" [disabled]="!creditCardTypeForm.valid" class="btn btn-primary">Submit</button>
+  <h1>Create Credit Card Type</h1>
+  <form [formGroup]="form" (ngSubmit)="createCreditCardType()" class="d-flex flex-column">
+    <mat-form-field>
+      <mat-label>Rewards Name</mat-label>
+      <input matInput formControlName="rewardsName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Interest Rate</mat-label>
+      <input matInput type="number" formControlName="interestRate" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Minimum Payment</mat-label>
+      <input matInput type="number" formControlName="minimumPayment" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Credit Limit</mat-label>
+      <input matInput type="number" formControlName="creditLimit" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Create</button>
   </form>
 </div>

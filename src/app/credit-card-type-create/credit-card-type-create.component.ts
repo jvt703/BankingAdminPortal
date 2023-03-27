@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import CreditCardType from '../Interfaces/creditCardType.model';
+import { Router } from '@angular/router';
+import { OutgoingCreditCardTypeDto } from '../Interfaces/creditCardType.model';
 import { CreditCardTypeService } from '../Services/credit-card-type.service';
 
 @Component({
@@ -8,14 +9,15 @@ import { CreditCardTypeService } from '../Services/credit-card-type.service';
   templateUrl: './credit-card-type-create.component.html',
   styleUrls: ['./credit-card-type-create.component.css']
 })
-export class CreditCardTypeCreateComponent implements OnInit{
+export class CreditCardTypeCreateComponent implements OnInit {
+  form: FormGroup;
 
-  creditCardTypeForm!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private creditCardTypeService: CreditCardTypeService) { }
-
-  ngOnInit(): void {
-    this.creditCardTypeForm = this.formBuilder.group({
+  constructor(
+    private fb: FormBuilder,
+    private creditCardTypeService: CreditCardTypeService,
+    private router: Router
+  ) {
+    this.form = this.fb.group({
       rewardsName: ['', Validators.required],
       interestRate: ['', Validators.required],
       minimumPayment: ['', Validators.required],
@@ -23,14 +25,14 @@ export class CreditCardTypeCreateComponent implements OnInit{
     });
   }
 
-  onSubmit() {
-    const newCreditCardType: CreditCardType = {
-      rewardsName: this.creditCardTypeForm.value.rewardsName,
-      interestRate: this.creditCardTypeForm.value.interestRate,
-      minimumPayment: this.creditCardTypeForm.value.minimumPayment,
-      creditLimit: this.creditCardTypeForm.value.creditLimit
-    };
-    this.creditCardTypeService.createCreditCardType(newCreditCardType).subscribe();
-    this.creditCardTypeForm.reset();
+  ngOnInit(): void {}
+
+  createCreditCardType(): void {
+    if (this.form.valid) {
+      const newCreditCardType: OutgoingCreditCardTypeDto = this.form.value;
+      this.creditCardTypeService.createCreditCardType(newCreditCardType).subscribe(() => {
+        this.router.navigate(['/credit-card-types']); // Adjust this path to the correct route
+      });
+    }
   }
 }
