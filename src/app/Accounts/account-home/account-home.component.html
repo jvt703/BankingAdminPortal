@@ -3,12 +3,13 @@
 
 
 <div
-  style="padding-left: 7rem; padding-right: 7rem; padding-top: 2rem;"
+  style="padding-left: 7rem; padding-right: 7rem;"
+  class="pt-2"
 >
   <p class="mat-body-strong">
     Filter results
   </p>
-  <div class="d-flex flex-row gap-3 align-items-end" style="margin-bottom: 2rem;">
+  <div class="d-flex flex-row gap-1 align-items-end" style="margin-bottom: 2rem;">
     <div class="form-group" *ngFor="let item of searchableFields">
       <label for="search-{{item.name}}">{{item.display}}</label>
       <input 
@@ -37,6 +38,7 @@
   <table 
     mat-table 
     matSort
+    class="mat-elevation-z8"
     *ngIf="dataSource.data" 
     [dataSource]="dataSource"
   >
