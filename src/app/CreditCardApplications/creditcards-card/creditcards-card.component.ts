@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreditcardInfoModalComponent } from '../creditcard-info-modal/creditcard-info-modal.component';
-import { LoanInfoModalComponent } from '../loan-info-modal/loan-info-modal.component';
 
 @Component({
   selector: 'app-creditcards-card',

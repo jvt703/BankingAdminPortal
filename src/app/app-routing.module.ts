@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AccountHomeComponent } from './Accounts/account-home/account-home.component';
 import { CreditCardTypeCreateComponent } from './CreditCardTypes/credit-card-type-create/credit-card-type-create.component';
 import { CreditCardTypesComponent } from './CreditCardTypes/credit-card-types/credit-card-types.component';
-import { CreditCardsComponent } from './credit-cards/credit-cards.component';
+import { CreditCardsComponent } from './CreditCardApplications/credit-cards/credit-cards.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoansComponent } from './loans/loans.component';
 import { UserCreateComponent } from './Users/user-create/user-create.component';

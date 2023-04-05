@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CreditcardService } from '../Services/creditcard.service';
+import { CreditcardService } from '../../Services/creditcard.service';
 import { PageEvent } from '@angular/material/paginator';
-import CreditCard from '../Interfaces/creditCards.model';
+import CreditCard from '../../Interfaces/creditCards.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment.development';
 
