@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreditCardType } from '../Interfaces/creditCardType.model';
-import { CreditCardTypeService } from '../Services/credit-card-type.service';
+import { CreditCardType } from 'src/app/Interfaces/creditCardType.model';
+import { CreditCardTypeService } from 'src/app/Services/credit-card-type.service';
 import { CreditCardTypeEditDialogComponent } from '../credit-card-type-edit-dialog/credit-card-type-edit-dialog.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';

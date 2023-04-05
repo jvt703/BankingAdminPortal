@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { OutgoingCreditCardTypeDto } from '../Interfaces/creditCardType.model';
-import { CreditCardTypeService } from '../Services/credit-card-type.service';
+import { OutgoingCreditCardTypeDto } from '../../Interfaces/creditCardType.model';
+import { CreditCardTypeService } from '../../Services/credit-card-type.service';
 
 @Component({
   selector: 'app-credit-card-type-create',

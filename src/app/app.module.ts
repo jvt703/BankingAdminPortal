@@ -37,9 +37,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CreditCardsComponent } from './credit-cards/credit-cards.component';
 import { CreditcardsCardComponent } from './creditcards-card/creditcards-card.component';
 import { CreditcardInfoModalComponent } from './creditcard-info-modal/creditcard-info-modal.component';
-import { CreditCardTypeCreateComponent } from './credit-card-type-create/credit-card-type-create.component';
-import { CreditCardTypesComponent } from './credit-card-types/credit-card-types.component';
-import { CreditCardTypeEditDialogComponent } from './credit-card-type-edit-dialog/credit-card-type-edit-dialog.component';
+import { CreditCardTypeCreateComponent } from './CreditCardTypes/credit-card-type-create/credit-card-type-create.component';
+import { CreditCardTypesComponent } from './CreditCardTypes/credit-card-types/credit-card-types.component';
+import { CreditCardTypeEditDialogComponent } from './CreditCardTypes/credit-card-type-edit-dialog/credit-card-type-edit-dialog.component';
 
 @NgModule({
   declarations: [

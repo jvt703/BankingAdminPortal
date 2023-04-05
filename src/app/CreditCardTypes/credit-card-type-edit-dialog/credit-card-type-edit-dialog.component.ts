@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CreditCardType, OutgoingCreditCardTypeDto } from '../Interfaces/creditCardType.model';
-import { CreditCardTypeService } from '../Services/credit-card-type.service';
+import { CreditCardType, OutgoingCreditCardTypeDto } from 'src/app/Interfaces/creditCardType.model';
+import { CreditCardTypeService } from 'src/app/Services/credit-card-type.service';
 
 @Component({
   selector: 'app-credit-card-type-edit-dialog',
