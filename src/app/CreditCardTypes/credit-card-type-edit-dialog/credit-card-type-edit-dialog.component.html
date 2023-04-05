@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Edit Credit Card Type</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Rewards Name</mat-label>
+      <input matInput formControlName="rewardsName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Interest Rate</mat-label>
+      <input matInput type="number" formControlName="interestRate" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Minimum Payment</mat-label>
+      <input matInput type="number" formControlName="minimumPayment" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Credit Limit</mat-label>
+      <input matInput type="number" formControlName="creditLimit" />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
+</div>

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoanService {
-  private apiUrl = 'https://localhost:8080/loanApplications';
+  private apiUrl = 'http://localhost:8080/loanApplications';
 
   constructor(private http: HttpClient) {}
 
@@ -15,7 +16,7 @@ export class LoanService {
     return this.http.get(url);
   }
 approveLoan(loanApplicationId: number, approval: boolean): Observable<any> {
-    const url = `https://localhost:8080/loanApplication/${loanApplicationId}`;
+    const url = `http://localhost:8080/loanApplication/${loanApplicationId}`;
     const requestBody = {
       approved: approval
     };
@@ -27,7 +28,7 @@ approveLoan(loanApplicationId: number, approval: boolean): Observable<any> {
   }
 
   fetchLoanSearch(searchUrl: string): Observable<any>{
-    let searchstring = this.apiUrl + searchUrl
+    let searchstring = environment.apiBaseUrl + "loanApplications" + searchUrl
   
     return this.http.get(searchstring);
 
