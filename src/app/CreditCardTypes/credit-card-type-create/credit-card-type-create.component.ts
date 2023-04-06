@@ -31,7 +31,7 @@ export class CreditCardTypeCreateComponent implements OnInit {
     if (this.form.valid) {
       const newCreditCardType: OutgoingCreditCardTypeDto = this.form.value;
       this.creditCardTypeService.createCreditCardType(newCreditCardType).subscribe(() => {
-        this.router.navigate(['/credit-card-types']); // Adjust this path to the correct route
+        this.router.navigate(['creditcardtypes']);
       });
     }
   }

@@ -4,14 +4,13 @@
   <div *ngIf="isLoading" class="spinner-container">
     <div class="spinner"></div>
   </div>
-<form class="search-form justify-content-center mt-2">
-  <div class="search-container d-flex">
-
+  <form class="search-form justify-content-center mt-2">
+    <div class="search-container d-flex">
       <mat-form-field>
         <input matInput name="id"type="number" placeholder="ID" [(ngModel)]="id">
       </mat-form-field>
       <mat-form-field>
-     <input matInput placeholder="Firstname" name="firstname"[(ngModel)]="firstname" >
+      <input matInput placeholder="Firstname" name="firstname"[(ngModel)]="firstname" >
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Lastname" name="lastname" [(ngModel)]="lastname">
@@ -32,12 +31,10 @@
           <mat-option value="False">Undecided</mat-option>
         </mat-select>
       </mat-form-field>
-  
-<button mat-raised-button color="primary" class="button-container d-flex align-items-center" (click)="search()">Search</button>
-</div>
-  
+    <button mat-raised-button color="primary" class="button-container d-flex align-items-center" (click)="search()">Search</button>
+  </div>
+  </form>
 
-</form>
   <div *ngFor="let creditCard of displayedCreditCards"><app-creditcards-card [creditCardData]="creditCard"></app-creditcards-card></div>
   <mat-paginator [length]="creditCards.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
     (page)="pageChanged($event)">

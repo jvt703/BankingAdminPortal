@@ -3,7 +3,6 @@ import { CreditcardService } from '../../Services/creditcard.service';
 import { PageEvent } from '@angular/material/paginator';
 import CreditCard from '../../Interfaces/creditCards.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-credit-cards',
@@ -27,7 +26,7 @@ export class CreditCardsComponent {
   constructor(private creditCardService : CreditcardService, private snackBar: MatSnackBar){}
 
 ngOnInit() {
-    this.fetchAllLoans();
+    this.fetchAllCreditCards();
   }
   showMore() {
     this.showAdditionalInputs = true;
@@ -37,7 +36,7 @@ ngOnInit() {
     this.showAdditionalInputs = false;
   }
 
- fetchAllLoans() {
+  fetchAllCreditCards() {
    this.isLoading = true;
    this.creditCardService.fetchAll().subscribe({
      next: (data) => {
